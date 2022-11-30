@@ -44,6 +44,7 @@ public class FaqTestAccordion {
         driver = new ChromeDriver();
         MainPage objFaqAccordion = new MainPage(driver);
         driver.get("https://qa-scooter.praktikum-services.ru/");
+        objFaqAccordion.clickCookieButton();
 
         objFaqAccordion.clickAccordionItem(index);
         String actualText = objFaqAccordion.getAccordionText(index);
@@ -53,7 +54,6 @@ public class FaqTestAccordion {
     }
     @After
     public void teardown() {
-        // Закрой браузер
         driver.quit();
     }
 }
