@@ -4,15 +4,14 @@ import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+
 
 import static org.junit.Assert.assertEquals;
 
-@RunWith(Parameterized.class)
-public class FaqTestAccordion {
 
-    private WebDriver driver;
+@RunWith(Parameterized.class)
+public class FaqTestAccordion extends BaseWeb{
+
     private final String expectedText;
 
     protected final int index;
@@ -39,11 +38,11 @@ public class FaqTestAccordion {
                 { 7, "Да, обязательно. Всем самокатов! И Москве, и Московской области."}
         };
     }
+
     @Test
-    public void checkFaqItems() {
-        driver = new ChromeDriver();
+    public void checkFaqItems () {
+
         MainPage objFaqAccordion = new MainPage(driver);
-        driver.get("https://qa-scooter.praktikum-services.ru/");
         objFaqAccordion.clickCookieButton();
 
         objFaqAccordion.clickAccordionItem(index);
@@ -51,9 +50,5 @@ public class FaqTestAccordion {
         assertEquals("Ответ не совпадает", expectedText, actualText);
 
 
-    }
-    @After
-    public void teardown() {
-        driver.quit();
     }
 }

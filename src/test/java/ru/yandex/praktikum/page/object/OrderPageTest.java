@@ -1,20 +1,16 @@
 package ru.yandex.praktikum.page.object;
 
 import static org.junit.Assert.*;
-import org.junit.After;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+
 
 
 
 @RunWith(Parameterized.class)
-public class OrderPageTest {
-
-    private WebDriver driver;
+public class OrderPageTest extends BaseWeb {
 
 
     private final boolean isOrderFromHeader;
@@ -56,10 +52,8 @@ public class OrderPageTest {
     }
 
     @Test
-    public void checkDaraFromOrder() {
-        driver = new ChromeDriver();
-        driver.get("https://qa-scooter.praktikum-services.ru/");
-        driver.manage().window().maximize();
+    public void checkDataFromOrder() {
+
         MainPage mainPage = new MainPage(driver);
         OrderPage orderPage = new OrderPage(driver);
         mainPage.clickCookieButton();
@@ -74,11 +68,6 @@ public class OrderPageTest {
 
 
 
-    }
-
-   @After
-    public void teardown() {
-        driver.quit();
     }
 
 }

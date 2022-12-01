@@ -10,7 +10,7 @@ import java.time.Duration;
 
 
 public class MainPage {
-    private WebDriver driver;
+    private final WebDriver driver;
 
     private String AccordionButtonLocator = ".//div[@id='accordion__heading-%s']";
 
@@ -27,6 +27,7 @@ private By CookieButton = By.xpath("//button[@id='rcc-confirm-button']");
     }
 
 
+    //Клик подтверждения Куки
     public void clickCookieButton(){
         driver.findElement(CookieButton).click();
     }
