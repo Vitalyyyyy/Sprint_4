@@ -12,15 +12,16 @@ import java.time.Duration;
 public class MainPage {
     private final WebDriver driver;
 
-    private String AccordionButtonLocator = ".//div[@id='accordion__heading-%s']";
+    private String accordionButtonLocator = ".//div[@id='accordion__heading-%s']";
 
     private String sectionQuestionsElementPanel = ".//div[@id='accordion__panel-%s']/p";
 
     protected String[] accordionIndexArray = {"0", "1", "2", "3", "4", "5", "6", "7"};
 
-    private By OrderHeaderButton = By.xpath("//button[@class='Button_Button__ra12g']");
-    private By OrderBottomButton = By.xpath("//button[@class='Button_Button__ra12g Button_Middle__1CSJM']");
-private By CookieButton = By.xpath("//button[@id='rcc-confirm-button']");
+    private By orderHeaderButton = By.xpath("//button[@class='Button_Button__ra12g']");
+
+    private By orderBottomButton = By.xpath("//button[@class='Button_Button__ra12g Button_Middle__1CSJM']");
+private By cookieButton = By.xpath("//button[@id='rcc-confirm-button']");
 
     public MainPage(WebDriver driver) {
         this.driver = driver;
@@ -29,11 +30,11 @@ private By CookieButton = By.xpath("//button[@id='rcc-confirm-button']");
 
     //Клик подтверждения Куки
     public void clickCookieButton(){
-        driver.findElement(CookieButton).click();
+        driver.findElement(cookieButton).click();
     }
     // Прокрутка до элемента и клик.
     public void clickAccordionItem(int n) {
-        String accordionHeadinglocator = String.format(AccordionButtonLocator, accordionIndexArray[n]);
+        String accordionHeadinglocator = String.format(accordionButtonLocator, accordionIndexArray[n]);
         WebElement element = driver.findElement(By.xpath(accordionHeadinglocator));
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
         driver.findElement(By.xpath(accordionHeadinglocator)).click();
@@ -48,15 +49,15 @@ private By CookieButton = By.xpath("//button[@id='rcc-confirm-button']");
     // Клик по кнопке заказа в Шапке
     public void clickOrderHeaderButton() {
         new WebDriverWait(driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.visibilityOfElementLocated(OrderHeaderButton));
-        driver.findElement(OrderHeaderButton).click();
+                .until(ExpectedConditions.visibilityOfElementLocated(orderHeaderButton));
+        driver.findElement(orderHeaderButton).click();
     }
 
     // Клик по кнопке Заказа на основной странице
     public void clickOrderBottomButton() {
-        WebElement element = driver.findElement(OrderBottomButton);
+        WebElement element = driver.findElement(orderBottomButton);
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
-        driver.findElement(OrderBottomButton).click();
+        driver.findElement(orderBottomButton).click();
 
 
     }

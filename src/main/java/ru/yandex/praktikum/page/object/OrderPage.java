@@ -44,7 +44,7 @@ public class OrderPage {
     //Чекбокс выбора цвета Черный
     private By secondFormColorIsBlack = By.xpath("//input[@id='black']");
 
-    //Чек бокс выбора цвета Серая безысходность
+    //Чекбокс выбора цвета Серая безысходность
     private By secondFormColorIsGrey = By.xpath("//input[@id='grey']");
 
     //Поле Комментарий для курьера
@@ -61,7 +61,7 @@ public class OrderPage {
     private By confirmButton = By.xpath("//button[contains(text(),'Да')]");
 
     //Текст страницы оформленного заказа
-    private By SuccessWindow = By.xpath("//div[@class='Order_ModalHeader__3FDaJ' and text() = 'Заказ оформлен']");
+    private By successWindow = By.xpath("//div[@class='Order_ModalHeader__3FDaJ' and text() = 'Заказ оформлен']");
 
 
     public OrderPage(WebDriver driver) {
@@ -112,15 +112,14 @@ public class OrderPage {
     }
 //Поиск сообщения:"Заказ оформлен"
     public boolean checkSuccessWindow() {
-        if (driver.findElements(SuccessWindow).size() > 0) {
-return true;
-        }else{
-            return false;
+        if (driver.findElements(successWindow).size() > 0) {
+            return true;
         }
-
+        return false;
+    }
     }
 
 
 
 
-}
+

@@ -7,15 +7,16 @@ import org.openqa.selenium.WebDriver;
 
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import static ru.yandex.praktikum.page.object.Constans.RESOURCE_LINK;
 
-    public abstract class BaseWeb {
+public abstract class BaseWeb {
 
         protected WebDriver driver;
 
         @Before
         public void webdrivermanagerSetup() {
             driver = getDriver("chrome");
-            driver.get("https://qa-scooter.praktikum-services.ru/");
+            driver.get(RESOURCE_LINK);
             driver.manage().window().maximize();
                 }
 
